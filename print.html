@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Garage Math Printable Worksheets</title>
+  <link rel="stylesheet" href="print.css" />
+</head>
+<body>
+  <header class="toolbar no-print">
+    <a href="index.html">← Back to Garage Math</a>
+    <div class="controls">
+      <label>Week <select id="weekSelect"></select></label>
+      <label>Type <select id="typeSelect"><option value="worksheet">Worksheet</option><option value="key">Answer Key</option></select></label>
+      <button id="openBtn">Open</button>
+      <button id="printBtn">Print / Save PDF</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="library" class="library no-print">
+      <h1>Garage Math Printable Library</h1>
+      <p>Choose any week below. Each worksheet is formatted for printing and can also be saved as a PDF from your browser's print menu.</p>
+      <div id="libraryGrid" class="library-grid"></div>
+    </section>
+    <section id="sheet" class="sheet" hidden></section>
+  </main>
+
+  <!-- Hidden elements allow the curriculum data file to load without changing the main site code. -->
+  <div hidden>
+    <div id="weekGrid"></div>
+    <dialog id="weekDialog"><button class="close">x</button><div id="dialogContent"></div></dialog>
+    <button id="printScope"></button>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="print.js"></script>
+</body>
+</html>
