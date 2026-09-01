@@ -5,8 +5,8 @@
   const style=document.createElement('style');
   style.textContent=`
     .week-actions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:auto}
-    .week-actions a{display:block;text-align:center;text-decoration:none;font-weight:900;padding:10px 12px;border-radius:4px}
-    .lesson-link{background:#f26a21;color:#fff}
+    .week-actions a,.week-actions button{display:block;width:100%;text-align:center;text-decoration:none;font-weight:900;padding:10px 12px;border-radius:4px;font:inherit;cursor:pointer}
+    .lesson-link{background:#f26a21;color:#fff;border:0}
     .worksheet-link{background:#fff;color:#17191a;border:1px solid #d8dde0}
     .key-link{background:#2a3034;color:#fff;border:1px solid #465057}
     @media(min-width:700px){.week-actions{grid-template-columns:1fr 1fr}.lesson-link{grid-column:1/-1}}
@@ -23,7 +23,7 @@
       const actions=document.createElement('div');
       actions.className='week-actions';
       actions.innerHTML=`
-        <a class="lesson-link" href="index.html?week=${week}#weeks">Lesson</a>
+        <button class="lesson-link" data-lesson-week="${week}">Lesson</button>
         <a class="worksheet-link" href="print.html?week=${week}&type=worksheet">Worksheet</a>
         <a class="key-link" href="print.html?week=${week}&type=key">Answer Key</a>`;
       old.replaceWith(actions);
@@ -31,10 +31,14 @@
     });
   }
 
+  grid.addEventListener('click',e=>{
+    const btn=e.target.closest('[data-lesson-week]');
+    if(btn && typeof window.openGarageWeek==='function') window.openGarageWeek(Number(btn.dataset.lessonWeek));
+  });
+
   function openRequestedWeek(){
     const requested=Number(new URLSearchParams(location.search).get('week'));
-    if(requested && typeof window.openWeek==='function') setTimeout(()=>window.openWeek(requested),50);
-    else if(requested && typeof openWeek==='function') setTimeout(()=>openWeek(requested),50);
+    if(requested && typeof window.openGarageWeek==='function') setTimeout(()=>window.openGarageWeek(requested),50);
   }
 
   enhance();
