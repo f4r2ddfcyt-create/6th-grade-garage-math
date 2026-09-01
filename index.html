@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Garage Math: a hands-on 6th grade math curriculum built around car racing, welding, and dirt bikes." />
+  <title>Garage Math | 6th Grade</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">6TH GRADE • 36 WEEKS • HANDS-ON</p>
+      <h1>GARAGE MATH</h1>
+      <p class="tagline">Learn 6th-grade math through car racing, welding, dirt bikes, tools, fabrication, and real-world garage projects.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#weeks">Start the Curriculum</a>
+        <button class="btn secondary" id="printScope">Print Scope & Sequence</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="topnav" aria-label="Main navigation">
+    <a href="#how">How It Works</a>
+    <a href="#weeks">36 Weeks</a>
+    <a href="#videos">Videos</a>
+    <a href="#parent">Parent Guide</a>
+  </nav>
+
+  <main>
+    <section id="how" class="section intro-grid">
+      <div>
+        <p class="section-kicker">Built for a hands-on learner</p>
+        <h2>Math that feels like working in the shop</h2>
+        <p>Each week connects a core 6th-grade skill to something concrete: lap times, gear ratios, fuel, tire pressure, welding measurements, metal cuts, shop budgets, dirt-bike jumps, track maps, and race statistics.</p>
+      </div>
+      <div class="feature-list">
+        <article><strong>4 days/week</strong><span>Short lessons with one practical application.</span></article>
+        <article><strong>Printable worksheets</strong><span>Every week includes a student sheet and answer key.</span></article>
+        <article><strong>Video support</strong><span>Curated learning links for each math topic.</span></article>
+        <article><strong>36-week plan</strong><span>Full-year coverage of major Grade 6 domains.</span></article>
+      </div>
+    </section>
+
+    <section id="weeks" class="section dark-section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Full-year curriculum</p>
+          <h2>36 Weeks of Garage Math</h2>
+        </div>
+        <div class="filters" aria-label="Curriculum filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="racing">Racing</button>
+          <button class="filter" data-filter="welding">Welding</button>
+          <button class="filter" data-filter="dirtbike">Dirt Bikes</button>
+        </div>
+      </div>
+      <div id="weekGrid" class="week-grid"></div>
+    </section>
+
+    <section id="videos" class="section">
+      <p class="section-kicker">Video library</p>
+      <h2>Extra Help by Topic</h2>
+      <div class="video-grid">
+        <a target="_blank" rel="noopener" href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-arithmetic-operations">Arithmetic Operations <span>Khan Academy →</span></a>
+        <a target="_blank" rel="noopener" href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-arithmetic-operations/cc-6th-dividing-fractions">Dividing Fractions <span>Khan Academy →</span></a>
+        <a target="_blank" rel="noopener" href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-prop-topic">Ratios & Rates <span>Khan Academy →</span></a>
+        <a target="_blank" rel="noopener" href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-arithmetic-operations/cc-6th-decimals">Decimals <span>Khan Academy →</span></a>
+        <a target="_blank" rel="noopener" href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-negative-number-topic">Negative Numbers <span>Khan Academy →</span></a>
+        <a target="_blank" rel="noopener" href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-expressions-and-variables">Expressions & Equations <span>Khan Academy →</span></a>
+        <a target="_blank" rel="noopener" href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-geometry-topic">Geometry <span>Khan Academy →</span></a>
+        <a target="_blank" rel="noopener" href="https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-data-statistics">Statistics <span>Khan Academy →</span></a>
+      </div>
+    </section>
+
+    <section id="parent" class="section parent-section">
+      <div>
+        <p class="section-kicker">Parent / teacher guide</p>
+        <h2>A simple weekly rhythm</h2>
+      </div>
+      <ol class="rhythm">
+        <li><b>Day 1 — Learn:</b> Watch the linked lesson, work through examples, and introduce the garage scenario.</li>
+        <li><b>Day 2 — Practice:</b> Complete the first half of the printable worksheet.</li>
+        <li><b>Day 3 — Apply:</b> Do the hands-on garage challenge or measurement activity.</li>
+        <li><b>Day 4 — Finish & Check:</b> Complete the worksheet, review mistakes, and use the answer key.</li>
+      </ol>
+      <p class="note"><strong>Tip:</strong> Real measurements make the lessons better. Use a tape measure, stopwatch, sockets, scrap wood/metal, tire gauges, catalogs, receipts, or race data whenever safe and practical.</p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>GARAGE MATH</strong>
+    <span>6th-grade math built for the garage, track, and shop.</span>
+  </footer>
+
+  <dialog id="weekDialog">
+    <button class="close" aria-label="Close">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
