@@ -10,7 +10,7 @@
   <header class="toolbar no-print">
     <a href="index.html">← Back to Garage Math</a>
     <div class="controls">
-      <label>Week <select id="weekSelect"></select></label>
+      <label>Week <select id="weekSelect"><option>Loading…</option></select></label>
       <label>Type <select id="typeSelect"><option value="worksheet">Worksheet</option><option value="key">Answer Key</option></select></label>
       <button id="openBtn">Open</button>
       <button id="printBtn">Print / Save PDF</button>
@@ -26,14 +26,13 @@
     <section id="sheet" class="sheet" hidden></section>
   </main>
 
-  <!-- Hidden elements allow the curriculum data file to load without changing the main site code. -->
   <div hidden>
     <div id="weekGrid"></div>
     <dialog id="weekDialog"><button class="close">x</button><div id="dialogContent"></div></dialog>
     <button id="printScope"></button>
   </div>
 
-  <script src="app.js"></script>
-  <script src="print.js"></script>
+  <script src="boot.js?v=20260901-fix1"></script>
+  <script src="print-loader.js?v=20260901-fix1"></script>
 </body>
 </html>
