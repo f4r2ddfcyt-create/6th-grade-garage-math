@@ -31,11 +31,14 @@
     });
   }
 
+  function openRequestedWeek(){
+    const requested=Number(new URLSearchParams(location.search).get('week'));
+    if(requested && typeof window.openWeek==='function') setTimeout(()=>window.openWeek(requested),50);
+    else if(requested && typeof openWeek==='function') setTimeout(()=>openWeek(requested),50);
+  }
+
   enhance();
   new MutationObserver(enhance).observe(grid,{childList:true,subtree:true});
-
-  const requested=Number(new URLSearchParams(location.search).get('week'));
-  if(requested && typeof openWeek==='function'){
-    setTimeout(()=>openWeek(requested),50);
-  }
+  if(window.weeks && window.weeks.length) openRequestedWeek();
+  else window.addEventListener('garageMathReady',()=>{enhance();openRequestedWeek();},{once:true});
 })();
