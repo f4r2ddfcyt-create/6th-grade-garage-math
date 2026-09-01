@@ -8,11 +8,16 @@ const libraryGrid=document.querySelector('#libraryGrid');
 
 function esc(s){return String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));}
 function themeName(t){return t==='dirtbike'?'Dirt Bikes':t.charAt(0).toUpperCase()+t.slice(1)}
+function pdfPage(week,type){return type==='key'?Number(week)*2:(Number(week)*2)-1}
+function openPdf(week,type){
+  const page=pdfPage(week,type);
+  window.location.href=`garage-math-workbook.pdf?v=20260901#page=${page}`;
+}
 
 weeks.forEach(w=>{
   const o=document.createElement('option');o.value=w.w;o.textContent=`${w.w} - ${w.t}`;weekSelect.appendChild(o);
   const card=document.createElement('article');card.className='lib-card';
-  card.innerHTML=`<div class="week-label">Week ${w.w} • ${themeName(w.theme)}</div><h3>${esc(w.t)}</h3><div class="lib-actions"><a href="print.html?week=${w.w}&type=worksheet">Worksheet</a><a href="print.html?week=${w.w}&type=key">Answer Key</a></div>`;
+  card.innerHTML=`<div class="week-label">Week ${w.w} • ${themeName(w.theme)}</div><h3>${esc(w.t)}</h3><div class="lib-actions"><a href="garage-math-workbook.pdf?v=20260901#page=${pdfPage(w.w,'worksheet')}">Worksheet PDF</a><a href="garage-math-workbook.pdf?v=20260901#page=${pdfPage(w.w,'key')}">Answer Key PDF</a></div>`;
   libraryGrid.appendChild(card);
 });
 
@@ -55,7 +60,8 @@ function openSheet(weekNum,type){
 }
 
 openBtn.addEventListener('click',()=>openSheet(weekSelect.value,typeSelect.value));
-printBtn.addEventListener('click',()=>{if(sheet.hidden)openSheet(weekSelect.value,typeSelect.value);window.print();});
+printBtn.textContent='Open Printable PDF';
+printBtn.addEventListener('click',()=>openPdf(weekSelect.value,typeSelect.value));
 
 const params=new URLSearchParams(location.search);
 if(params.has('week')) openSheet(params.get('week'),params.get('type')||'worksheet');
