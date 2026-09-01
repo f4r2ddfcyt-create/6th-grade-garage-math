@@ -1,6 +1,6 @@
 (async function(){
   try {
-    const response = await fetch('app.js?v=20260901-fix1', {cache:'no-store'});
+    const response = await fetch('app.js?v=20260901-fix2', {cache:'no-store'});
     if(!response.ok) throw new Error('Could not load curriculum data');
     let source = await response.text();
 
@@ -8,6 +8,8 @@
     source = source.replace(/\]\},project:/g, '],project:');
     // Make the curriculum array available to the printable library too.
     source = source.replace(/^const\s+weeks\s*=\s*\[/, 'window.weeks = [');
+    // Expose the weekly lesson opener to direct Lesson buttons.
+    source += '\nwindow.openGarageWeek = openWeek;';
 
     new Function(source)();
     window.dispatchEvent(new Event('garageMathReady'));
